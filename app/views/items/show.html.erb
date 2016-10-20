@@ -1,0 +1,77 @@
+<%= link_to '<< Back', items_path, :class => "btn btn-success" %>
+
+<br/><br/>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">產品名稱: <%= @item.name %></h3>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8"><%= image_tag(@item.picture_url, :width => "65%") if @item.picture.present? %></div>
+      </div>
+<br/>
+      <div class="row">
+        <div class="col-md-2"><b>產品編號<br/>Product Model Number</b></div>
+        <div class="col-md-4"><%= @item.product_model_number %></div>
+      </div>
+<br/>
+      <div class="row">
+        <div class="col-md-2"><b>製造商<br/>Vendor</b></div>
+        <div class="col-md-4"><%= @item.vendor_name %></div>
+      </div>
+<br/>
+      <div class="row">
+        <div class="col-md-2"><b>Vendor Part Number</b></div>
+        <div class="col-md-4"><%= @item.vendor_part_number %></div>
+      </div>
+<br/>
+      <div class="row">
+        <div class="col-md-2"><b>Vendor URL</b></div>
+        <div class="col-md-4"><%= link_to(@item.vendor_url, @item.vendor_url, :target => "_blank") %></div>
+      </div>
+<br/>
+      <div class="row">
+        <div class="col-md-2"><b>數量<br/>Quantity</b></div>
+        <div class="col-md-4"><%= @item.quantity %></div>
+      </div>
+<br/>
+      <div class="row">
+        <div class="col-md-2"><b>價值(單位)<br/>Unit Value</b></div>
+        <div class="col-md-4"><%= number_to_currency(@item.unit_value, :unit => "$")%></div>
+      </div>
+<br/>
+      <div class="row">
+        <div class="col-md-2"><b>總值<br/>Total Value</b></div>
+        <div class="col-md-4"><%= number_to_currency(@item.value, :unit => "$") %></div>
+      </div>
+<br/>
+        <div class="row">
+          <div class="col-md-2"><b>現存地<br/>Location</b></div>
+          <div class="col-md-4"><%= @item.location %></div>
+        </div>
+<br/>
+        <div class="row">
+          <div class="col-md-2"><b>描述<br/>Description</b></div>
+          <div class="col-md-8"><%= simple_format(@item.description) %></div>
+        </div>
+<br/>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <%= link_to 'Edit', edit_item_path(@item), :class => "btn btn-primary" %>
+            <%= link_to 'Delete', @item, confirm: 'Are you sure?', method: :delete, :class => "btn btn-warning" %>
+            <%= link_to 'Cancel', items_path, :class => "btn btn-danger" %>
+          </div>
+        </div>
+
+
+    </div>
+
+
+</div>

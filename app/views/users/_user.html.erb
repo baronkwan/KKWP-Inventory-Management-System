@@ -1,0 +1,21 @@
+
+<%= form_for(user) do |f| %>
+
+    <td><%= link_to user.email, user %></td>
+    <td><%= f.select(:role, User.roles.keys.map {|role| [role,role]}) %></td>
+    <td><%= f.submit 'Change Role', :class => 'btn btn-primary'  %> <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure? 確定刪除此用户?" }, :method => :delete, :class => 'btn btn-danger') unless user == current_user %></td>
+
+<% end %>
+
+<!-- <td>
+  <%= link_to user.email, user %>
+</td>
+<td>
+  <%= form_for(user) do |f| %>
+    <%= f.select(:role, User.roles.keys.map {|role| [role,role]}) %>
+    <%= f.submit 'Change Role', :class => 'btn btn-primary' %>
+  <% end %>
+</td>
+<td>
+  <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger') unless user == current_user %>
+</td> -->
